@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: commission-splitter
+
+  main:
+    web-application-type: none
+
+app:
+  output:
+    # Dossier fixe à la racine (créé automatiquement)
+    targetDir: "./output"
+    zip: true
+    folderPrefix: "Commissions_SPLIT"
+
+  parsing:
+    # 3e ligne => index 2 (0-based)
+    pageLineIndex: 2
+    # 4e ligne => index 3 (0-based)
+    agentLineIndex: 3
+    # 3e token en partant de la droite
+    agentTokenFromRight: 3
+    # "PAGE  X"
+    pageRegex: "PAGE\\s*[:N°o\\-]*\\s*(\\d+)(?:\\s*/\\s*\\d+)?"
+    # Tolérances de reconstruction du texte à partir des positions PDF
+    yTolerance: 8.0
+    tokenGapTolerance: 10.0
+
